@@ -1,0 +1,41 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /_next
+
+# *
+User-agent: *
+Disallow: /manager
+
+# *
+User-agent: *
+Disallow: /api-docs
+
+# *
+User-agent: *
+Disallow: /login
+
+# *
+User-agent: *
+Disallow: /cdn-cgi
+
+# *
+User-agent: *
+Disallow: /auth
+
+# *
+User-agent: *
+Disallow: /auth/signin
+
+# *
+User-agent: *
+Disallow: /assets
+
+# Host
+Host: host.com
+
+# Sitemaps
+Sitemap: https://host.com/sitemap.xml

@@ -1,0 +1,891 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Blender Pro";
+  src: local("Blender Pro Medium"),
+    url("/fonts/BlenderPro-Medium.woff2") format("woff2"),
+    url("/fonts/BlenderPro-Medium.woff") format("woff"),
+    url("/fonts/BlenderPro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Blender Pro";
+  src: url("/fonts/BlenderPro-Book.eot");
+  src: local("Blender Pro Book"), local("BlenderPro-Book"),
+    url("/fonts/BlenderPro-Book.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/BlenderPro-Book.woff2") format("woff2"),
+    url("/fonts/BlenderPro-Book.woff") format("woff"),
+    url("/fonts/BlenderPro-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Blender Pro";
+  src: url("/fonts/BlenderPro-Bold.eot");
+  src: local("Blender Pro Bold"), local("BlenderPro-Bold"),
+    url("/fonts/BlenderPro-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/BlenderPro-Bold.woff2") format("woff2"),
+    url("/fonts/BlenderPro-Bold.woff") format("woff"),
+    url("/fonts/BlenderPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Blender Pro";
+  src: url("/fonts/BlenderPro-Thin.eot");
+  src: local("Blender Pro Thin"), local("BlenderPro-Thin"),
+    url("/fonts/BlenderPro-Thin.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/BlenderPro-Thin.woff2") format("woff2"),
+    url("/fonts/BlenderPro-Thin.woff") format("woff"),
+    url("/fonts/BlenderPro-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@layer base {
+  html {
+    @apply bg-black text-white font-blenderPro;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  #products ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bp-test {
+    @apply bg-red-500 sm:bg-orange-300 md:bg-green-400 lg:bg-cyan-500 xl:bg-teal-600 2xl:bg-yellow-400;
+  }
+
+  .default-max-width {
+    @apply max-w-[2100px] w-[85vw] md:w-[90vw] lg:w-[91vw] min-[1580px]:w-[88vw] mx-auto;
+  }
+  .black-gradient {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+  .text-shadow-hero {
+    text-shadow: -1.09px -1.09px rgba(240, 73, 255, 0.73),
+      1.09px 1.09px rgba(55, 219, 255, 0.86);
+    /* text-shadow: -2.09px -2.09px rgba(240, 73, 255, 0.73),
+      2.09px 2.09px rgba(55, 219, 255, 0.86); */
+  }
+  .text-shadow-none {
+    text-shadow: none;
+    /* text-shadow: -2.09px -2.09px rgba(240, 73, 255, 0.73),
+      2.09px 2.09px rgba(55, 219, 255, 0.86); */
+  }
+
+  /* .custom-blur {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+  } */
+  .custom-blur::before {
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    inset: 0;
+  }
+
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background-size: auto;
+    background-image: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-position-x: calc(100% - 10px);
+    background-position-y: 50%;
+    width: auto;
+    height: 100%;
+  }
+}
+@layer components {
+  .primary-outlined-button-gradient {
+    background: rgb(73, 244, 208);
+    background: linear-gradient(
+      235deg,
+      rgba(73, 244, 208, 1) 0%,
+      rgba(103, 219, 178, 1) 100%
+    );
+  }
+  .card-gradient {
+    background: rgba(0, 0, 0, 0);
+    background: linear-gradient(180deg, #5bfdc3 0%, #3defdb 100%);
+  }
+  .btn-outlined {
+    @apply uppercase py-3 text-center text-sm;
+  }
+  .text-gradient-primary {
+    @apply primary-outlined-button-gradient text-transparent bg-clip-text;
+  }
+
+  .button-corners {
+    clip-path: polygon(
+      3px 0.898682px,
+      calc(100% - 14.981px) 0.898682px,
+      calc(100% - 14.981px) 0.898682px,
+      calc(100% - 14.837429px) 0.903274634px,
+      calc(100% - 14.694992px) 0.916962512px,
+      calc(100% - 14.554103px) 0.939610598px,
+      calc(100% - 14.415176px) 0.971083856px,
+      calc(100% - 14.278625px) 1.01124725px,
+      calc(100% - 14.144864px) 1.059965744px,
+      calc(100% - 14.014307px) 1.117104302px,
+      calc(100% - 13.887368px) 1.182527888px,
+      calc(100% - 13.764461px) 1.256101466px,
+      calc(100% - 13.646px) 1.33769px,
+      calc(100% - 2.047px) 9.88942px,
+      calc(100% - 2.047px) 9.88942px,
+      calc(100% - 1.881683px) 10.02388198px,
+      calc(100% - 1.731144px) 10.17199744px,
+      calc(100% - 1.596001px) 10.33253266px,
+      calc(100% - 1.476872px) 10.50425392px,
+      calc(100% - 1.374375px) 10.6859275px,
+      calc(100% - 1.289128px) 10.87631968px,
+      calc(100% - 1.221749px) 11.07419674px,
+      calc(100% - 1.172856px) 11.27832496px,
+      calc(100% - 1.143067px) 11.48747062px,
+      calc(100% - 1.133px) 11.7004px,
+      calc(100% - 1.133px) calc(100% - 10.5504px),
+      calc(100% - 1.133px) calc(100% - 10.5504px),
+      calc(100% - 1.162439px) calc(100% - 10.1854482px),
+      calc(100% - 1.247672px) calc(100% - 9.8392416px),
+      calc(100% - 1.384073px) calc(100% - 9.5164134px),
+      calc(100% - 1.567016px) calc(100% - 9.2215968px),
+      calc(100% - 1.791875px) calc(100% - 8.959425px),
+      calc(100% - 2.054024px) calc(100% - 8.7345312px),
+      calc(100% - 2.348837px) calc(100% - 8.5515486px),
+      calc(100% - 2.671688px) calc(100% - 8.4151104px),
+      calc(100% - 3.017951px) calc(100% - 8.3298498px),
+      calc(100% - 3.383px) calc(100% - 8.3004px),
+      calc(100% - 20.936px) calc(100% - 8.3004px),
+      calc(100% - 43.57px) calc(100% - 8.3004px),
+      15.5434px calc(100% - 8.3004px),
+      15.5434px calc(100% - 8.3004px),
+      15.419305px calc(100% - 8.3038253px),
+      15.29596px calc(100% - 8.3140504px),
+      15.173635px calc(100% - 8.3309991px),
+      15.0526px calc(100% - 8.3545952px),
+      14.933125px calc(100% - 8.3847625px),
+      14.81548px calc(100% - 8.4214248px),
+      14.699935px calc(100% - 8.4645059px),
+      14.58676px calc(100% - 8.5139296px),
+      14.476225px calc(100% - 8.5696197px),
+      14.3686px calc(100% - 8.6315px),
+      1.82527px calc(100% - 16.31px),
+      1.82527px calc(100% - 16.31px),
+      1.63284087px calc(100% - 16.4419483px),
+      1.45693376px calc(100% - 16.5914064px),
+      1.29842809px calc(100% - 16.7568041px),
+      1.15820328px calc(100% - 16.9365712px),
+      1.03713875px calc(100% - 17.1291375px),
+      0.93611392px calc(100% - 17.3329328px),
+      0.85600821px calc(100% - 17.5463869px),
+      0.79770104px calc(100% - 17.7679296px),
+      0.76207183px calc(100% - 17.9959907px),
+      0.75px calc(100% - 18.229px),
+      0.75px 3.14868px,
+      0.75px 3.14868px,
+      0.77944872px 2.783718536px,
+      0.86470656px 2.437506448px,
+      1.00114104px 2.114676192px,
+      1.18411968px 1.819860224px,
+      1.40901px 1.557691px,
+      1.67117952px 1.332800976px,
+      1.96599576px 1.149822608px,
+      2.28882624px 1.013388352px,
+      2.63503848px 0.928130664px,
+      3px 0.898682px
+    );
+
+    /* clip-path: polygon(90% 0%, 100% 25%, 100% 100%, 10% 100%, 0 75%, 0 0); */
+  }
+  .line {
+    @apply card-gradient;
+    clip-path: polygon(100% 0, 88% 100%, 0 100%, 0% 60%, 0 0);
+    width: clamp(3.125rem, -1.944rem + 21.628vw, 8.438rem);
+    height: clamp(0.375rem, 0.256rem + 0.509vw, 0.5rem);
+    position: absolute;
+  }
+
+  .project-card-mobile {
+    clip-path: polygon(
+      24.2513px 1.48796px,
+      24.2513px 1.48796px,
+      24.4637073px 1.30719896px,
+      24.6890224px 1.14354188px,
+      24.9260651px 0.99744182px,
+      25.1736552px 0.86935184px,
+      25.4306125px 0.759725px,
+      25.6957568px 0.66901436px,
+      25.9679079px 0.59767298px,
+      26.2458856px 0.54615392px,
+      26.5285097px 0.51491024px,
+      26.8146px 0.504395px,
+      calc(100% - 4.117px) 0.5045px,
+      calc(100% - 4.117px) 0.5045px,
+      calc(100% - 3.521978px) 0.54969802px,
+      calc(100% - 2.9575439999999px) 0.68055216px,
+      calc(100% - 2.431246px) 0.88995254px,
+      calc(100% - 1.950632px) 1.17078928px,
+      calc(100% - 1.52325px) 1.5159525px,
+      calc(100% - 1.156648px) 1.91833232px,
+      calc(100% - 0.858374px) 2.37081886px,
+      calc(100% - 0.63597600000003px) 2.86630224px,
+      calc(100% - 0.49700199999998px) 3.39767258px,
+      calc(100% - 0.44900000000001px) 3.95782px,
+      calc(100% - 0.44900000000001px) calc(50% - -77.771px),
+      calc(100% - 0.44900000000001px) calc(50% - -77.771px),
+      calc(100% - 0.45464799999996px) calc(50% - -77.96227px),
+      calc(100% - 0.47150399999995px) calc(50% - -78.1524px),
+      calc(100% - 0.499436px) calc(50% - -78.34097px),
+      calc(100% - 0.53831199999996px) calc(50% - -78.52756px),
+      calc(100% - 0.58799999999999px) calc(50% - -78.71175px),
+      calc(100% - 0.648368px) calc(50% - -78.89312px),
+      calc(100% - 0.71928400000002px) calc(50% - -79.07125px),
+      calc(100% - 0.80061599999999px) calc(50% - -79.24572px),
+      calc(100% - 0.89223199999998px) calc(50% - -79.41611px),
+      calc(100% - 0.994px) calc(50% - -79.582px),
+      calc(100% - 6.674px) calc(50% - -88.262px),
+      calc(100% - 6.674px) calc(50% - -88.262px),
+      calc(100% - 6.775768px) calc(50% - -88.427891px),
+      calc(100% - 6.867384px) calc(50% - -88.598288px),
+      calc(100% - 6.948716px) calc(50% - -88.772777px),
+      calc(100% - 7.019632px) calc(50% - -88.950944px),
+      calc(100% - 7.08px) calc(50% - -89.132375px),
+      calc(100% - 7.129688px) calc(50% - -89.316656px),
+      calc(100% - 7.168564px) calc(50% - -89.503373px),
+      calc(100% - 7.196496px) calc(50% - -89.692112px),
+      calc(100% - 7.213352px) calc(50% - -89.882459px),
+      calc(100% - 7.219px) calc(50% - -90.074px),
+      calc(100% - 7.219px) calc(100% - 10.877px),
+      calc(100% - 7.219px) calc(100% - 10.877px),
+      calc(100% - 7.267001px) calc(100% - 10.316915px),
+      calc(100% - 7.405968px) calc(100% - 9.7855999999999px),
+      calc(100% - 7.628347px) calc(100% - 9.290165px),
+      calc(100% - 7.9265839999999px) calc(100% - 8.83772px),
+      calc(100% - 8.293125px) calc(100% - 8.435375px),
+      calc(100% - 8.720416px) calc(100% - 8.09024px),
+      calc(100% - 9.200903px) calc(100% - 7.809425px),
+      calc(100% - 9.727032px) calc(100% - 7.60004px),
+      calc(100% - 10.291249px) calc(100% - 7.469195px),
+      calc(100% - 10.886px) calc(100% - 7.424px),
+      calc(50% - -45.348px) calc(100% - 7.424px),
+      calc(50% - -45.348px) calc(100% - 7.424px),
+      calc(50% - -45.129572px) calc(100% - 7.4178749999999px),
+      calc(50% - -44.912656px) calc(100% - 7.3995999999999px),
+      calc(50% - -44.697804px) calc(100% - 7.3693249999999px),
+      calc(50% - -44.485568px) calc(100% - 7.3271999999999px),
+      calc(50% - -44.2765px) calc(100% - 7.273375px),
+      calc(50% - -44.071152px) calc(100% - 7.208px),
+      calc(50% - -43.870076px) calc(100% - 7.131225px),
+      calc(50% - -43.673824px) calc(100% - 7.0432px),
+      calc(50% - -43.482948px) calc(100% - 6.944075px),
+      calc(50% - -43.298px) calc(100% - 6.8340000000001px),
+      calc(50% - -34.241px) calc(100% - 1.085px),
+      calc(50% - -34.241px) calc(100% - 1.085px),
+      calc(50% - -34.056322px) calc(100% - 0.97519599999998px),
+      calc(50% - -33.865656px) calc(100% - 0.87628799999993px),
+      calc(50% - -33.669554px) calc(100% - 0.788432px),
+      calc(50% - -33.468568px) calc(100% - 0.71178399999997px),
+      calc(50% - -33.26325px) calc(100% - 0.6465px),
+      calc(50% - -33.054152px) calc(100% - 0.59273599999995px),
+      calc(50% - -32.841826px) calc(100% - 0.55064799999997px),
+      calc(50% - -32.626824px) calc(100% - 0.52039199999996px),
+      calc(50% - -32.409698px) calc(100% - 0.50212399999998px),
+      calc(50% - -32.191px) calc(100% - 0.49600000000004px),
+      4.10495px calc(100% - 0.49599999999998px),
+      4.10495px calc(100% - 0.49599999999998px),
+      3.51006976px calc(100% - 0.54119500000002px),
+      2.94575088px calc(100% - 0.67203999999998px),
+      2.41954412px calc(100% - 0.88142499999998px),
+      1.93900024px calc(100% - 1.1622399999999px),
+      1.51167px calc(100% - 1.507375px),
+      1.14510416px calc(100% - 1.90972px),
+      0.84685348px calc(100% - 2.362165px),
+      0.62446872px calc(100% - 2.8576px),
+      0.48550064px calc(100% - 3.388915px),
+      0.4375px calc(100% - 3.9490000000001px),
+      0.4375px 24.8556px,
+      0.4375px 24.8556px,
+      0.449351517px 24.5780975px,
+      0.484546016px 24.304156px,
+      0.542543419px 24.0349845px,
+      0.622803648px 23.771792px,
+      0.724786625px 23.5157875px,
+      0.847952272px 23.26818px,
+      0.991760511px 23.0301785px,
+      1.155671264px 22.802992px,
+      1.339144453px 22.5878295px,
+      1.54164px 22.3859px,
+      24.2513px 1.48796px
+    );
+  }
+
+  .pboxContainer > svg {
+    backdrop-filter: blur(200px);
+  }
+
+  .project-card-desktop {
+    clip-path: polygon(
+      25.9619px 3.6748px,
+      25.9619px 3.6748px,
+      26.1891817px 3.46468197px,
+      26.4304416px 3.27427136px,
+      26.6844119px 3.10409839px,
+      26.9498248px 2.95469328px,
+      27.2254125px 2.82658625px,
+      27.5099072px 2.72030752px,
+      27.8020411px 2.63638731px,
+      28.1005464px 2.57535584px,
+      28.4041553px 2.53774333px,
+      28.7116px 2.52408px,
+      calc(100% - 5.791px) 0.238217px,
+      calc(100% - 5.791px) 0.238217px,
+      calc(100% - 5.151378px) 0.287343227px,
+      calc(100% - 4.5441439999999px) 0.435669296px,
+      calc(100% - 3.9774459999999px) 0.675014189px,
+      calc(100% - 3.459432px) 0.997196888px,
+      calc(100% - 2.99825px) 1.394036375px,
+      calc(100% - 2.602048px) 1.857351632px,
+      calc(100% - 2.2789740000001px) 2.378961641px,
+      calc(100% - 2.037176px) 2.950685384px,
+      calc(100% - 1.884802px) 3.564341843px,
+      calc(100% - 1.83px) 4.21175px,
+      calc(100% - 0.87px) calc(100% - 71.883px),
+      calc(100% - 0.87px) calc(100% - 71.883px),
+      calc(100% - 0.87486799999999px) calc(100% - 71.6615px),
+      calc(100% - 0.89178399999986px) calc(100% - 71.44132px),
+      calc(100% - 0.92061600000005px) calc(100% - 71.22294px),
+      calc(100% - 0.96123199999994px) calc(100% - 71.00684px),
+      calc(100% - 1.0135px) calc(100% - 70.7935px),
+      calc(100% - 1.077288px) calc(100% - 70.5834px),
+      calc(100% - 1.152464px) calc(100% - 70.37702px),
+      calc(100% - 1.238896px) calc(100% - 70.17484px),
+      calc(100% - 1.336452px) calc(100% - 69.97734px),
+      calc(100% - 1.445px) calc(100% - 69.785px),
+      calc(100% - 7.501px) calc(100% - 59.719px),
+      calc(100% - 7.501px) calc(100% - 59.719px),
+      calc(100% - 7.6095489999999px) calc(100% - 59.526931px),
+      calc(100% - 7.7071119999999px) calc(100% - 59.329648px),
+      calc(100% - 7.793563px) calc(100% - 59.127637px),
+      calc(100% - 7.868776px) calc(100% - 58.921384px),
+      calc(100% - 7.932625px) calc(100% - 58.711375px),
+      calc(100% - 7.984984px) calc(100% - 58.498096px),
+      calc(100% - 8.025727px) calc(100% - 58.282033px),
+      calc(100% - 8.054728px) calc(100% - 58.063672px),
+      calc(100% - 8.0718610000001px) calc(100% - 57.843499px),
+      calc(100% - 8.077px) calc(100% - 57.622px),
+      calc(100% - 7.867px) calc(100% - 14.785px),
+      calc(100% - 7.867px) calc(100% - 14.785px),
+      calc(100% - 7.915364px) calc(100% - 14.136875px),
+      calc(100% - 8.0616719999999px) calc(100% - 13.5216px),
+      calc(100% - 8.297848px) calc(100% - 12.947425px),
+      calc(100% - 8.615816px) calc(100% - 12.4226px),
+      calc(100% - 9.0074999999999px) calc(100% - 11.955375px),
+      calc(100% - 9.464824px) calc(100% - 11.554px),
+      calc(100% - 9.9797119999999px) calc(100% - 11.226725px),
+      calc(100% - 10.544088px) calc(100% - 10.9818px),
+      calc(100% - 11.149876px) calc(100% - 10.827475px),
+      calc(100% - 11.789px) calc(100% - 10.772px),
+      calc(100% - 87.856px) calc(100% - 10.4px),
+      calc(100% - 87.856px) calc(100% - 10.4px),
+      calc(100% - 88.090832px) calc(100% - 10.39172px),
+      calc(100% - 88.323936px) calc(100% - 10.3694px),
+      calc(100% - 88.554724px) calc(100% - 10.33322px),
+      calc(100% - 88.782608px) calc(100% - 10.28336px),
+      calc(100% - 89.007px) calc(100% - 10.22px),
+      calc(100% - 89.227312px) calc(100% - 10.14332px),
+      calc(100% - 89.442956px) calc(100% - 10.0535px),
+      calc(100% - 89.653344px) calc(100% - 9.95072px),
+      calc(100% - 89.857888px) calc(100% - 9.83516px),
+      calc(100% - 90.056px) calc(100% - 9.7070000000001px),
+      calc(100% - 99.758px) calc(100% - 3.012px),
+      calc(100% - 99.758px) calc(100% - 3.012px),
+      calc(100% - 99.956113px) calc(100% - 2.884083px),
+      calc(100% - 100.160664px) calc(100% - 2.7686639999999px),
+      calc(100% - 100.371071px) calc(100% - 2.665941px),
+      calc(100% - 100.586752px) calc(100% - 2.576112px),
+      calc(100% - 100.807125px) calc(100% - 2.499375px),
+      calc(100% - 101.031608px) calc(100% - 2.435928px),
+      calc(100% - 101.259619px) calc(100% - 2.385969px),
+      calc(100% - 101.490576px) calc(100% - 2.349696px),
+      calc(100% - 101.723897px) calc(100% - 2.327307px),
+      calc(100% - 101.959px) calc(100% - 2.3190000000001px),
+      5.61895px calc(100% - 0.392px),
+      5.61895px calc(100% - 0.392px),
+      4.97925682px calc(100% - 0.44103599999994px),
+      4.37192896px calc(100% - 0.5892879999999px),
+      3.80512294px calc(100% - 0.82857200000001px),
+      3.28699528px calc(100% - 1.150704px),
+      2.8257025px calc(100% - 1.5475px),
+      2.42940112px calc(100% - 2.010776px),
+      2.10624766px calc(100% - 2.532348px),
+      1.86439864px calc(100% - 3.104032px),
+      1.71201058px calc(100% - 3.717644px),
+      1.65724px calc(100% - 4.3650000000001px),
+      0.496849px 30.8187px,
+      0.496849px 30.8187px,
+      0.508015918px 30.4977624px,
+      0.544294384px 30.1808232px,
+      0.605110666px 29.8692828px,
+      0.689891032px 29.5645416px,
+      0.79806175px 29.268px,
+      0.929049088px 28.9810584px,
+      1.082279314px 28.7051172px,
+      1.257178696px 28.4415768px,
+      1.453173502px 28.1918376px,
+      1.66969px 27.9573px,
+      25.9619px 3.6748px
+    );
+  }
+  .project-card-inverted {
+    clip-path: polygon(
+      calc(100% - 26.613px) 2.44848px,
+      calc(100% - 26.613px) 2.44848px,
+      calc(100% - 26.808569px) 2.26939419px,
+      calc(100% - 27.015952px) 2.10732312px,
+      calc(100% - 27.234063px) 1.96269933px,
+      calc(100% - 27.461816px) 1.83595536px,
+      calc(100% - 27.698125px) 1.72752375px,
+      calc(100% - 27.941904px) 1.63783704px,
+      calc(100% - 28.192067px) 1.56732777px,
+      calc(100% - 28.447528px) 1.51642848px,
+      calc(100% - 28.707201px) 1.48557171px,
+      calc(100% - 28.97px) 1.47519px,
+      4.62122px 1.47515px,
+      4.62122px 1.47515px,
+      4.07546089px 1.51980257px,
+      3.55708632px 1.64914496px,
+      3.07317743px 1.85625419px,
+      2.63081536px 2.13420728px,
+      2.23708125px 2.47608125px,
+      1.89905624px 2.87495312px,
+      1.62382147px 3.32389991px,
+      1.41845808px 3.81599864px,
+      1.29004721px 4.34432633px,
+      1.24567px 4.90196px,
+      1.24567px calc(100% - 70.13px),
+      1.24567px calc(100% - 70.13px),
+      1.25088575px calc(100% - 69.939388px),
+      1.2664524px calc(100% - 69.750024px),
+      1.29224905px calc(100% - 69.562316px),
+      1.3281548px calc(100% - 69.376672px),
+      1.37404875px calc(100% - 69.1935px),
+      1.42981px calc(100% - 69.013208px),
+      1.49531765px calc(100% - 68.836204px),
+      1.5704508px calc(100% - 68.662896px),
+      1.65508855px calc(100% - 68.493692px),
+      1.74911px calc(100% - 68.329px),
+      7.91827px calc(100% - 58.187px),
+      7.91827px calc(100% - 58.187px),
+      8.04550741px calc(100% - 57.964194px),
+      8.16000328px calc(100% - 57.735352px),
+      8.26160407px calc(100% - 57.501038px),
+      8.35015624px calc(100% - 57.261816px),
+      8.42550625px calc(100% - 57.01825px),
+      8.48750056px calc(100% - 56.770904px),
+      8.53598563px calc(100% - 56.520342px),
+      8.57080792px calc(100% - 56.267128px),
+      8.59181389px calc(100% - 56.011826px),
+      8.59885px calc(100% - 55.755px),
+      8.59885px calc(100% - 12.466px),
+      8.59885px calc(100% - 12.466px),
+      8.6432264px calc(100% - 11.908344px),
+      8.7716352px calc(100% - 11.379992px),
+      8.9769958px calc(100% - 10.887868px),
+      9.2522276px calc(100% - 10.438896px),
+      9.59025px calc(100% - 10.04px),
+      9.9839824px calc(100% - 9.6981039999999px),
+      10.4263442px calc(100% - 9.420132px),
+      10.9102548px calc(100% - 9.213008px),
+      11.4286336px calc(100% - 9.083656px),
+      11.9744px calc(100% - 9.039px),
+      88.8417px calc(100% - 9.039px),
+      88.8417px calc(100% - 9.039px),
+      89.1158302px calc(100% - 9.030726px),
+      89.3879816px calc(100% - 9.006048px),
+      89.6574654px calc(100% - 8.965182px),
+      89.9235928px calc(100% - 8.908344px),
+      90.185675px calc(100% - 8.83575px),
+      90.4430232px calc(100% - 8.747616px),
+      90.6949486px calc(100% - 8.644158px),
+      90.9407624px calc(100% - 8.525592px),
+      91.1797758px calc(100% - 8.3921340000001px),
+      91.4113px calc(100% - 8.2440000000001px),
+      101.249px calc(100% - 1.527px),
+      101.249px calc(100% - 1.527px),
+      101.418986px calc(100% - 1.418336px),
+      101.594408px calc(100% - 1.3204479999999px),
+      101.774762px calc(100% - 1.233492px),
+      101.959544px calc(100% - 1.157624px),
+      102.14825px calc(100% - 1.093px),
+      102.340376px calc(100% - 1.039776px),
+      102.535418px calc(100% - 0.998108px),
+      102.732872px calc(100% - 0.96815200000003px),
+      102.932234px calc(100% - 0.95006400000005px),
+      103.133px calc(100% - 0.94400000000007px),
+      calc(100% - 4.302px) calc(100% - 0.94400000000002px),
+      calc(100% - 4.302px) calc(100% - 0.94400000000002px),
+      calc(100% - 3.7562209999999px) calc(100% - 0.98865599999999px),
+      calc(100% - 3.2378079999999px) calc(100% - 1.118008px),
+      calc(100% - 2.753847px) calc(100% - 1.325132px),
+      calc(100% - 2.311424px) calc(100% - 1.603104px),
+      calc(100% - 1.917625px) calc(100% - 1.945px),
+      calc(100% - 1.579536px) calc(100% - 2.343896px),
+      calc(100% - 1.3042429999999px) calc(100% - 2.792868px),
+      calc(100% - 1.098832px) calc(100% - 3.284992px),
+      calc(100% - 0.97038900000001px) calc(100% - 3.813344px),
+      calc(100% - 0.92599999999999px) calc(100% - 4.371px),
+      calc(100% - 0.92599999999999px) 29.3193px,
+      calc(100% - 0.92599999999999px) 29.3193px,
+      calc(100% - 0.93698199999994px) 29.0431934px,
+      calc(100% - 0.96957599999985px) 28.7707312px,
+      calc(100% - 1.023254px) 28.5031098px,
+      calc(100% - 1.097488px) 28.2415256px,
+      calc(100% - 1.19175px) 27.987175px,
+      calc(100% - 1.305512px) 27.7412544px,
+      calc(100% - 1.4382459999999px) 27.5049602px,
+      calc(100% - 1.589424px) 27.2794888px,
+      calc(100% - 1.758518px) 27.0660366px,
+      calc(100% - 1.945px) 26.8658px,
+      calc(100% - 26.613px) 2.44848px
+    );
+  }
+  .our-story-card {
+    clip-path: polygon(
+      14.6166px 0.385742px,
+      calc(100% - 0.136px) 0.385742px,
+      calc(100% - 0.136px) calc(100% - 14.671px),
+      calc(100% - 11.855px) calc(100% - 0.995px),
+      0.795898px calc(100% - 0.995px),
+      0.795898px 16.471px,
+      14.6166px 0.385742px
+    );
+  }
+  .our-story-card-desktop {
+    clip-path: polygon(
+      30.4056px 0.202148px,
+      calc(100% - 0.78800000000001px) 0.202148px,
+      calc(100% - 0.78800000000001px) calc(100% - 30.855px),
+      calc(100% - 26.562px) calc(100% - 0.774px),
+      0.00830078px calc(100% - 0.774px),
+      0.00830078px 35.5801px,
+      30.4056px 0.202148px
+    );
+  }
+  .story-image-frame {
+    clip-path: polygon(
+      1.81867px 1.81867px,
+      calc(100% - 1.819px) 1.81867px,
+      calc(100% - 1.819px) calc(100% - 11.536px),
+      calc(100% - 10.971px) calc(100% - 1.819px),
+      1.81867px calc(100% - 1.819px),
+      1.81867px 1.81867px
+    );
+    background: black;
+    box-sizing: border-box;
+  }
+  .story-image-frame-desktop {
+    clip-path: polygon(
+      4.0293px 4.93457px,
+      calc(100% - 4.68px) 4.93457px,
+      calc(100% - 4.68px) calc(100% - 26.862px),
+      calc(100% - 25.341px) calc(100% - 4.854px),
+      4.0293px calc(100% - 4.854px),
+      4.0293px 4.93457px
+    );
+  }
+  .story-image-frame-desktop div {
+    clip-path: polygon(
+      4.0293px 4.93457px,
+      calc(100% - 4.68px) 4.93457px,
+      calc(100% - 4.68px) calc(100% - 26.862px),
+      calc(100% - 25.341px) calc(100% - 4.854px),
+      4.0293px calc(100% - 4.854px),
+      4.0293px 4.93457px
+    );
+  }
+  .story-image-frame div {
+    clip-path: polygon(
+      1.81867px 1.81867px,
+      calc(100% - 1.819px) 1.81867px,
+      calc(100% - 1.819px) calc(100% - 11.536px),
+      calc(100% - 10.971px) calc(100% - 1.819px),
+      1.81867px calc(100% - 1.819px),
+      1.81867px 1.81867px
+    );
+  }
+  .drawer-div {
+    clip-path: polygon(
+      28.5871px 1.86744px,
+      28.5871px 1.86744px,
+      28.8359625px 1.622569322px,
+      29.099948px 1.400868496px,
+      29.3776735px 1.202951334px,
+      29.667756px 1.029431648px,
+      29.9688125px 0.88092325px,
+      30.27946px 0.758039952px,
+      30.5983155px 0.661395566px,
+      30.923996px 0.591603904px,
+      31.2551185px 0.549278778px,
+      31.5903px 0.535034px,
+      calc(100% - 5.059px) 0.535177px,
+      calc(100% - 5.059px) 0.535177px,
+      calc(100% - 4.362045px) 0.596405914px,
+      calc(100% - 3.7008799999999px) 0.773671552px,
+      calc(100% - 3.0843550000001px) 1.057342258px,
+      calc(100% - 2.52132px) 1.437786376px,
+      calc(100% - 2.0206250000001px) 1.90537225px,
+      calc(100% - 1.59112px) 2.450468224px,
+      calc(100% - 1.241655px) 3.063442642px,
+      calc(100% - 0.98108000000002px) 3.734663848px,
+      calc(100% - 0.81824499999999px) 4.454500186px,
+      calc(100% - 0.76200000000006px) 5.21332px,
+      calc(100% - 0.762px) calc(100% - 41.849px),
+      calc(100% - 0.762px) calc(100% - 41.849px),
+      calc(100% - 0.762px) calc(100% - 37.809089px),
+      calc(100% - 0.76199999999994px) calc(100% - 35.646272px),
+      calc(100% - 0.76200000000006px) calc(100% - 34.852823px),
+      calc(100% - 0.762px) calc(100% - 34.921016px),
+      calc(100% - 0.762px) calc(100% - 35.343125px),
+      calc(100% - 0.762px) calc(100% - 35.611424px),
+      calc(100% - 0.762px) calc(100% - 35.218187px),
+      calc(100% - 0.76200000000006px) calc(100% - 33.655688px),
+      calc(100% - 0.762px) calc(100% - 30.416201px),
+      calc(100% - 0.76200000000006px) calc(100% - 24.992px),
+      calc(100% - 0.762px) calc(100% - 24.992px),
+      calc(100% - 1.4560599999999px) calc(100% - 24.183404px),
+      calc(100% - 3.3422px) calc(100% - 22.239632px),
+      calc(100% - 6.12636px) calc(100% - 19.448108px),
+      calc(100% - 9.51448px) calc(100% - 16.096256px),
+      calc(100% - 13.2125px) calc(100% - 12.4715px),
+      calc(100% - 16.92636px) calc(100% - 8.861264px),
+      calc(100% - 20.362px) calc(100% - 5.5529720000001px),
+      calc(100% - 23.22536px) calc(100% - 2.834048px),
+      calc(100% - 25.22238px) calc(100% - 0.991916px),
+      calc(100% - 26.059px) calc(100% - 0.31400000000008px),
+      calc(100% - 26.059px) calc(100% - 0.31400000000002px),
+      calc(100% - 54.15188764px) calc(100% - 0.31399999999996px),
+      calc(100% - 81.27498112px) calc(100% - 0.31399999999996px),
+      calc(100% - 107.67552628px) calc(100% - 0.31400000000002px),
+      calc(100% - 133.60076896px) calc(100% - 0.31400000000002px),
+      calc(100% - 159.297955px) calc(100% - 0.31400000000002px),
+      calc(100% - 185.01433024px) calc(100% - 0.31400000000002px),
+      calc(100% - 210.99714052px) calc(100% - 0.31400000000008px),
+      calc(100% - 237.49363168px) calc(100% - 0.31400000000002px),
+      calc(100% - 264.75104956px) calc(100% - 0.31400000000002px),
+      calc(100% - 293.01664px) calc(100% - 0.31400000000008px),
+      4.98336px calc(100% - 0.31400000000002px),
+      4.286392554px calc(100% - 0.37524300000001px),
+      3.625230072px calc(100% - 0.55254399999995px),
+      3.008719338px calc(100% - 0.83626099999998px),
+      2.445707136px calc(100% - 1.216752px),
+      1.94504025px calc(100% - 1.684375px),
+      1.515565464px calc(100% - 2.229488px),
+      1.166129562px calc(100% - 2.842449px),
+      0.905579328px calc(100% - 3.513616px),
+      0.742761546px calc(100% - 4.233347px),
+      0.686523px calc(100% - 4.9920000000001px),
+      0.686523px 33.5231px,
+      0.686523px 33.5231px,
+      0.700408536px 33.1471516px,
+      0.741643248px 32.7760368px,
+      0.809594292px 32.4113912px,
+      0.903628824px 32.0548504px,
+      1.023114px 31.70805px,
+      1.167416976px 31.3726256px,
+      1.335904908px 31.0502128px,
+      1.527944952px 30.7424472px,
+      1.742904264px 30.4509644px,
+      1.98015px 30.1774px,
+      28.5871px 1.86744px
+    );
+  }
+  .contactUs-div {
+    clip-path: polygon(
+      0.951172px 39.4785px,
+      41.1591px 0.690918px,
+      calc(100% - 43.86px) 0.690974px,
+      calc(100% - 0.73000000000002px) 39.4888px,
+      calc(100% - 0.73000000000002px) calc(100% - 0.63000000000011px),
+      0.951172px calc(100% - 0.63000000000011px),
+      0.951172px 39.4785px
+    );
+  }
+  .tabBar-topLeft-corner {
+    clip-path: polygon(
+      0.418746px 10.4343px,
+      10.1767px 0.418746px,
+      calc(100% - 1.3416px) 0.418746px,
+      calc(100% - 1.3416px) 9.07108px,
+      calc(100% - 1.3416px) calc(100% - 0.9175px),
+      calc(100% - 12.3984px) calc(100% - 0.9175px),
+      calc(100% - 25.0358px) calc(100% - 0.9175px),
+      0.418746px calc(100% - 0.9175px),
+      0.418746px calc(100% - 8.8779px),
+      0.418746px 10.4343px
+    );
+  }
+  .tabBar-topRight-corner {
+    clip-path: polygon(
+      1.29472px calc(100% - 8.9083px),
+      1.29472px 0.675536px,
+      calc(100% - 10.489px) 0.675536px,
+      calc(100% - 0.77800000000001px) 9.42478px,
+      calc(100% - 0.77800000000001px) calc(100% - 1.0305px),
+      calc(100% - 11.799px) calc(100% - 1.0305px),
+      calc(100% - 24.397px) calc(100% - 1.0305px),
+      1.29472px calc(100% - 1.0305px),
+      1.29472px calc(100% - 8.9083px)
+    );
+  }
+  .tabBar-bottomLeft-corner {
+    clip-path: polygon(
+      0.699996px calc(100% - 9.524px),
+      0.699996px 0.968063px,
+      calc(100% - 1.0603px) 0.968063px,
+      calc(100% - 1.0603px) 9.6204px,
+      calc(100% - 1.0603px) calc(100% - 1.3682px),
+      calc(100% - 12.1171px) calc(100% - 1.3682px),
+      calc(100% - 24.7545px) calc(100% - 1.3682px),
+      10.4332px calc(100% - 1.3682px),
+      0.699996px calc(100% - 9.524px)
+    );
+  }
+  .tabBar-normal-corner {
+    clip-path: polygon(
+      0.495895px calc(100% - 8.9135px),
+      0.495895px 0.673446px,
+      calc(100% - 0.6117px) 0.673446px,
+      calc(100% - 0.6117px) 9.23536px,
+      calc(100% - 0.6117px) calc(100% - 1.0366px),
+      calc(100% - 8.8767px) calc(100% - 1.0366px),
+      calc(100% - 18.4396px) calc(100% - 1.0366px),
+      0.495895px calc(100% - 1.0366px),
+      0.495895px calc(100% - 8.9135px)
+    );
+  }
+}
+
+@layer utilities {
+  .nav-line-design-before {
+    width: clamp(9.25rem, -18.75rem + 39.063vw, 18.75rem);
+    right: clamp(7.5rem, -22.5rem + 54.688vw, 30rem);
+  }
+  .nav-line-design-after {
+    width: clamp(9.25rem, -18.75rem + 39.063vw, 18.75rem);
+    right: clamp(6.25rem, -23.75rem + 46.875vw, 21.25rem);
+  }
+  .nav-logo {
+    width: clamp(9.375rem, 6.473rem + 7.254vw, 13.438rem);
+    height: clamp(1rem, 0.598rem + 1.004vw, 1.563rem);
+  }
+  .nav-links-gap {
+    @apply text-[18px];
+    gap: clamp(0.938rem, -2.188rem + 4.883vw, 2.5rem);
+  }
+  .nav-rect-position {
+    left: clamp(3.125rem, -175.865rem + 181.469vw, 7.813rem);
+  }
+  .nav-rect-width {
+    /* left: clamp(3.125rem, -6.25rem + 14.648vw, 7.813rem); */
+    width: clamp(6.25rem, -73.301rem + 102.564vw, 8.75rem);
+  }
+  .earth-position {
+    /* top: clamp(12rem, -6.368rem + 78.372vw, 31.25rem); */
+    top: clamp(12rem, -0.854rem + 50.163vw, 31.25rem);
+  }
+  .hero-heading {
+    margin-top: clamp(5rem, -1.8rem + 26.536vw, 10.938rem);
+    max-width: clamp(18.75rem, -18.5rem + 93.125vw, 56rem);
+  }
+  .hero-sub-heading {
+    font-size: clamp(1.25rem, 0.296rem + 4.071vw, 2.25rem);
+  }
+  .dropshadow-text-size {
+    font-size: clamp(2.125rem, 0.336rem + 7.634vw, 4rem);
+  }
+  .section-heading-text-size {
+    font-size: clamp(1.375rem, 1.256rem + 0.509vw, 1.5rem);
+  }
+  .description-text {
+    margin-top: clamp(4rem, 0.839rem + 13.486vw, 7.313rem);
+    font-size: clamp(1rem, 0.523rem + 2.036vw, 1.5rem);
+  }
+  .advertisers-margin {
+    margin-top: clamp(14.375rem, 10.2rem + 17.812vw, 18.75rem);
+  }
+  .advertisers-offers {
+    margin-top: clamp(5.938rem, 4.625rem + 5.598vw, 7.313rem);
+    gap: clamp(1.25rem, -2.626rem + 16.539vw, 5.313rem);
+    font-size: clamp(0.875rem, 0.338rem + 2.29vw, 1.438rem);
+  }
+  .advertisers-offers-icons-gap {
+    gap: clamp(0.75rem, 0.094rem + 2.799vw, 1.438rem);
+  }
+  .advertisers-offers-icons-width {
+    width: clamp(2.063rem, 0.929rem + 4.835vw, 3.25rem);
+  }
+  .discover-our-story-card {
+    font-size: clamp(1.375rem, 0.182rem + 5.089vw, 2.625rem);
+  }
+  .discover-our-story-card-frame {
+    padding: clamp(0.125rem, 0.065rem + 0.254vw, 0.188rem);
+    width: clamp(15.625rem, 6.083rem + 40.712vw, 25.625rem);
+  }
+  .about-us-description {
+    font-size: clamp(1rem, 0.702rem + 1.272vw, 1.313rem);
+  }
+  .faq-margin {
+    margin-top: clamp(6rem, -0.202rem + 26.463vw, 12.5rem);
+  }
+  .faq-question {
+    font-size: clamp(1.313rem, 0.537rem + 3.308vw, 2.125rem);
+  }
+  .faq-answer {
+    font-size: clamp(1rem, 0.642rem + 1.527vw, 1.375rem);
+  }
+  .faq-dash {
+    height: clamp(0.25rem, -0.227rem + 2.036vw, 0.75rem);
+    width: clamp(1.125rem, 1.006rem + 0.509vw, 1.25rem);
+  }
+  .faq-plus {
+    height: clamp(1rem, 0.881rem + 0.509vw, 1.125rem);
+    width: clamp(1.125rem, 1.006rem + 0.509vw, 1.25rem);
+  }
+  .faq-gap {
+    gap: clamp(1.25rem, 0.654rem + 2.545vw, 1.875rem);
+  }
+  .contactUs-grid {
+    column-gap: clamp(3.125rem, -9.531rem + 26.367vw, 11.563rem);
+    margin-top: clamp(2rem, -0.901rem + 12.376vw, 9rem);
+    font-size: clamp(1.125rem, 0.767rem + 1.527vw, 1.5rem);
+  }
+  .footer-text {
+    font-size: clamp(1rem, 0.761rem + 1.018vw, 1.25rem);
+  }
+  .footer-gap {
+    gap: clamp(0.5rem, -0.245rem + 3.181vw, 1.281rem);
+    padding: clamp(0.25rem, 0.011rem + 1.018vw, 0.5rem);
+  }
+  .footer-logo {
+    width: clamp(7.5rem, 1.834rem + 24.173vw, 13.438rem);
+    height: clamp(1rem, 0.463rem + 2.29vw, 1.563rem);
+  }
+  .footer-copyright {
+    font-size: clamp(0.813rem, 0.395rem + 1.781vw, 1.25rem);
+  }
+}
